@@ -17,7 +17,15 @@ py "Link between s2001 and s1002 down"
 link s2001 s1002 down
 sh sleep .05
 h016 iperf -c h001 -i 20
-py "Link between s2003 and s1001 down"
+py "Link between s2003 and s1001  and s2008 and s3007 down"
 link s2003 s1001 down
+link s2008 s3007 down
+sh sleep .05
+h016 iperf -c h001 -i 20
+py "Swap closest to client"
+link s3008 s2008 up
+link s3007 s2008 up
+link s3008 s2007 down
+link s2007 s3007 down
 sh sleep .05
 h016 iperf -c h001 -i 20
